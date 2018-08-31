@@ -1,54 +1,25 @@
-Source: libdrm
+Source: libdrm-imx
 Priority: optional
 Maintainer: AIY Projects <support-aiyprojects@google.com>
 Build-Depends:
  debhelper (>= 10),
  quilt,
- xsltproc,
- docbook-xsl,
- libx11-dev,
  pkg-config,
  xutils-dev (>= 1:7.6+2),
- libudev-dev [linux-any],
- libpciaccess-dev,
- valgrind [amd64 armhf i386 mips mipsel powerpc s390x],
- libbsd-dev [kfreebsd-any],
+ libdrm-dev (>= 2.4.74),
 Standards-Version: 4.0.0
 Section: libs
 
-Package: libdrm-dev
+Package: libdrm-imx-dev
 Section: libdevel
-Architecture: linux-any kfreebsd-any
+Architecture: arm64
 Depends:
- libdrm2 (= ${binary:Version}),
  libdrm-vivante (= ${binary:Version}) [arm64],
+ libdrm-libkms (= ${binary:Version}) [arm64],
+ libdrm-dev (>= 2.4.74),
  ${misc:Depends},
 Multi-Arch: same
-Description: Userspace interface to kernel DRM services -- development files
- This library implements the userspace interface to the kernel DRM
- services.  DRM stands for "Direct Rendering Manager", which is the
- kernelspace portion of the "Direct Rendering Infrastructure" (DRI).
- The DRI is currently used on Linux to provide hardware-accelerated
- OpenGL drivers.
- .
- This package provides the development environment for libdrm.
-
-Package: libdrm2
-Architecture: linux-any kfreebsd-any
-Depends:
- ${shlibs:Depends},
- ${misc:Depends},
-Multi-Arch: same
-Pre-Depends: ${misc:Pre-Depends}
-Description: Userspace interface to kernel DRM services -- runtime
- This library implements the userspace interface to the kernel DRM
- services.  DRM stands for "Direct Rendering Manager", which is the
- kernelspace portion of the "Direct Rendering Infrastructure" (DRI).
- The DRI is currently used on Linux to provide hardware-accelerated
- OpenGL drivers.
- .
- This package provides the runtime environment for libdrm.
-
+Description: imx specific libdrm development headers.
 
 Package: libdrm-vivante
 Architecture: arm64
@@ -57,9 +28,13 @@ Depends:
  ${misc:Depends},
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
-Description: Userspace interface to etnaviv-specific kernel DRM services -- runtime
- This library implements the userspace interface to the kernel DRM
- services.  DRM stands for "Direct Rendering Manager", which is the
- kernelspace portion of the "Direct Rendering Infrastructure" (DRI).
- The DRI is currently used on Linux to provide hardware-accelerated
- OpenGL drivers.
+Description: Vivante libdrm extensions.
+
+Package: libdrm-libkms
+Architecture: arm64
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Description: libdrm libkms

@@ -1,49 +1,20 @@
 #!/usr/bin/make -f
 
-###
-### Configuration, decide what to build
-###
-
-# Some variables:
-DEB_HOST_ARCH     ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
-DEB_HOST_ARCH_OS  ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
-DEB_HOST_ARCH_CPU ?= $(shell dpkg-architecture -qDEB_HOST_ARCH_CPU)
-
-confflags = \
-	--enable-libkms \
-	--enable-vivante-experimental-api \
-	--disable-radeon \
-	--disable-amdgpu \
-	--disable-nouveau \
-	--disable-vmwgfx \
-	--disable-intel \
-	--disable-vc4 \
-	--disable-exynos-experimental-api \
-	--disable-omap-experimental-api \
-	--disable-freedreno \
-	--disable-tegra-experimental-api \
-	--disable-etnaviv-experimental-api \
-	$()
-
-
-###
-### Actual build
-###
-
 override_dh_auto_configure:
-	dh_auto_configure -- --enable-static=yes $(confflags)
-
-override_dh_auto_test:
-	echo "Skipping make check"
+	dh_auto_configure -- --enable-static=yes
 
 override_dh_install:
 	find debian/tmp -name '*.la' -delete
 	rm -rf debian/tmp/usr/share/libdrm
+	mkdir -p debian/tmp/usr/include/libdrm
+	cp include/drm/imx_drm.h debian/tmp/usr/include/libdrm
+	cp include/drm/drm_mode_imx.h debian/tmp/usr/include/libdrm
+	cp include/drm/drm_fourcc_imx.h debian/tmp/usr/include/libdrm
 	dh_install --fail-missing
 
 override_dh_makeshlibs:
-	dh_makeshlibs -plibdrm2 -V'libdrm2 (>= 2.4.82)' -- -c4
-	dh_makeshlibs -plibdrm-vivante1 -V'libdrm-vivante1 (>= 2.4.80)' -- -c4
+	dh_makeshlibs -plibdrm2 -V'libdrm2 (>= 2.4.74)' -- -c4
+	dh_makeshlibs -plibdrm-vivante -V'libdrm-vivante (>= 2.4.74)' -- -c4
 
 %:
 	dh $@ --with quilt --builddirectory=build/
