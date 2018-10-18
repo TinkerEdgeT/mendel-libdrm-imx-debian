@@ -12,17 +12,17 @@ Section: libs
 
 Package: libdrm-imx-dev
 Section: libdevel
-Architecture: arm64
+Architecture: arm64 armhf
 Depends:
- libdrm-vivante (= ${binary:Version}) [arm64],
- libdrm-libkms (= ${binary:Version}) [arm64],
+ libdrm-vivante (= ${binary:Version}) [${Arch}],
+ libdrm-libkms (= ${binary:Version}) [${Arch}],
  libdrm-dev (>= 2.4.74),
  ${misc:Depends},
 Multi-Arch: same
 Description: imx specific libdrm development headers.
 
 Package: libdrm-vivante
-Architecture: arm64
+Architecture: arm64 armhf
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
@@ -31,7 +31,7 @@ Multi-Arch: same
 Description: Vivante libdrm extensions.
 
 Package: libdrm-libkms
-Architecture: arm64
+Architecture: arm64 armhf
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
