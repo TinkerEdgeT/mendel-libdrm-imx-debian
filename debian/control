@@ -1,6 +1,6 @@
 Source: libdrm-imx
 Priority: optional
-Maintainer: AIY Projects <coral-support@google.com>
+Maintainer: Coral <coral-support@google.com>
 Build-Depends:
  debhelper (>= 10),
  quilt,
