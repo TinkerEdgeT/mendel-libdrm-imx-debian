@@ -1,3 +1,9 @@
+libdrm-imx (2.4.84+imx-mendel2) mendel-chef; urgency=medium
+
+  * Cut for chef release
+
+ -- Coral <coral-support@google.com>  Tue, 19 Mar 2019 17:08:25 -0700
+
 libdrm-imx (2.4.84+imx-mendel1) mendel-beaker; urgency=medium
 
   * Cut for beaker release and version normalization.
