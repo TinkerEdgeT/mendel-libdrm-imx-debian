@@ -20,6 +20,7 @@ Depends:
  ${misc:Depends},
 Multi-Arch: same
 Description: imx specific libdrm development headers.
+ C headers for IMX-specific libdrm extensions.
 
 Package: libdrm-vivante
 Architecture: arm64 armhf
@@ -29,6 +30,8 @@ Depends:
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
 Description: Vivante libdrm extensions.
+ Extensions to libdrm to support the Vivante GPU
+ in i.MX8.
 
 Package: libdrm-libkms
 Architecture: arm64 armhf
@@ -37,4 +40,5 @@ Depends:
  ${misc:Depends},
 Pre-Depends: ${misc:Pre-Depends}
 Multi-Arch: same
-Description: libdrm libkms
+Description: libdrm's libkms library
+ libdrm's libkms with patches for i.MX8.

@@ -15,6 +15,7 @@ override_dh_install:
 override_dh_makeshlibs:
 	dh_makeshlibs -plibdrm2 -V'libdrm2 (>= 2.4.74)' -- -c4
 	dh_makeshlibs -plibdrm-vivante -V'libdrm-vivante (>= 2.4.74)' -- -c4
+	dh_makeshlibs
 
 %:
 	dh $@ --with quilt --builddirectory=build/
