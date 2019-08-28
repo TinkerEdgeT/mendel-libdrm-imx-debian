@@ -1,5 +1,7 @@
 #!/usr/bin/make -f
 
+export DEB_CFLAGS_MAINT_APPEND = -DMAJOR_IN_SYSMACROS=1
+
 override_dh_auto_configure:
 	dh_auto_configure -- --enable-static=yes
 
@@ -11,11 +13,6 @@ override_dh_install:
 	cp include/drm/drm_mode_imx.h debian/tmp/usr/include/libdrm
 	cp include/drm/drm_fourcc_imx.h debian/tmp/usr/include/libdrm
 	dh_install --fail-missing
-
-override_dh_makeshlibs:
-	dh_makeshlibs -plibdrm2 -V'libdrm2 (>= 2.4.74)' -- -c4
-	dh_makeshlibs -plibdrm-vivante -V'libdrm-vivante (>= 2.4.74)' -- -c4
-	dh_makeshlibs
 
 %:
 	dh $@ --with quilt --builddirectory=build/
