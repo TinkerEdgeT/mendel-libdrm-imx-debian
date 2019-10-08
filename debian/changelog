@@ -1,3 +1,9 @@
+libdrm-imx (2.4.84+imx-mendel3) mendel-day; urgency=medium
+
+  * Cut for day release
+
+ -- Coral <coral-support@google.com>  Tue, 08 Oct 2019 15:10:51 -0500
+
 libdrm-imx (2.4.84+imx-mendel2) mendel-chef; urgency=medium
 
   * Cut for chef release
